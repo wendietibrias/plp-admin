@@ -12,7 +12,7 @@ function RoleIndex() {
   const {
     UserTableColumns,
     handlePageChange,
-    handleRoleSearch,
+    handleSearch,
     isRoleDataLoading,
     roleData,
     refetchRoleData,
@@ -23,7 +23,7 @@ function RoleIndex() {
     <IndexPageComponent
       refetch={refetchRoleData}
       searchProps={{
-        onSearch: handleRoleSearch,
+        onSearch: handleSearch,
         placeholder: "Cari Peran",
       }}
       actions={

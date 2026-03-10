@@ -11,7 +11,7 @@ import useUserIndexController from "./UserIndexController";
 function UserIndex() {
   const {
     UserTableColumns,
-    handleUserSearch,
+    handleSearch,
     isUserDataLoading,
     refetchUserData,
     userData,
@@ -25,7 +25,7 @@ function UserIndex() {
       filters={FilterProps}
       searchProps={{
         placeholder: "Cari pengguna...",
-        onSearch: handleUserSearch,
+        onSearch: handleSearch,
         loading: isUserDataLoading,
       }}
       refetch={refetchUserData}
