@@ -18,7 +18,7 @@ interface ActionButtonComponentProps {
   editProps?: { buttonProps?: ButtonProps; link?: string };
   deleteProps?: {
     buttonProps?: ButtonProps;
-    popConfirmProps?: PopconfirmProps;
+    popConfirmProps: PopconfirmProps;
   };
 }
 
