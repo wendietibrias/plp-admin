@@ -18,7 +18,7 @@ export const useSidebarState = (menuItems: ItemType[]) => {
 
   const selectedKeys = useMemo(() => {
     const segments = currentPath.split("/").filter(Boolean);
-    if (!segments.length) return [""];
+    if (!segments.length) return ["/"];
     const key = FindSelectedKey(menuItems, segments[0]);
     return key ? [key] : [];
   }, [currentPath, menuItems]);

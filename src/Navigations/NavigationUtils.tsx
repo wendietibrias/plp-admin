@@ -9,7 +9,10 @@ import {
 export const GetCurrentNavigationName = (path: string): string => {
   const segment: NavigationKeyEnumType = path.split("/").filter(Boolean)[0];
   return (
-    NavigationKeyEnum[segment as keyof typeof NavigationKeyEnum] || "Dashboard"
+    Object.keys(NavigationKeyEnum).find(
+      (key: string) =>
+        NavigationKeyEnum[key as keyof typeof NavigationKeyEnum] === segment,
+    ) || "Dashboard"
   );
 };
 
