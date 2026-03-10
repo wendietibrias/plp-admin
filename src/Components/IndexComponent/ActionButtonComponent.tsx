@@ -13,22 +13,24 @@ import {
 } from "antd";
 import { Link } from "react-router-dom";
 
-interface ActionButtonComponentProps {
+interface ActionButtonComponentProps<T extends BaseModel> {
   detailProps?: { buttonProps?: ButtonProps; link?: string };
   editProps?: { buttonProps?: ButtonProps; link?: string };
   deleteProps?: {
     buttonProps?: ButtonProps;
     popConfirmProps: PopconfirmProps;
   };
+  record: T;
+  additionalActionButtons?: React.ReactNode;
 }
 
-function ActionButtonComponent<T extends BaseModel>(
-  props: ActionButtonComponentProps,
-  record: T,
-  additionalActionButtons?: React.ReactNode,
-) {
-  const { detailProps, editProps, deleteProps } = props;
-
+function ActionButtonComponent<T extends BaseModel>({
+  detailProps,
+  editProps,
+  deleteProps,
+  record,
+  additionalActionButtons,
+}: ActionButtonComponentProps<T>) {
   return (
     <>
       {!!detailProps && (
@@ -37,25 +39,19 @@ function ActionButtonComponent<T extends BaseModel>(
             type="text"
             icon={
               <FileTextOutlined
-                style={{
-                  color: ActionButtonColorEnum.DETAIL,
-                }}
+                style={{ color: ActionButtonColorEnum.DETAIL }}
               />
             }
-            {...detailProps}
+            {...detailProps.buttonProps}
           />
         </Link>
       )}
       {editProps && (
-        <Link to={`./${record.id}/edit`}>
+        <Link to={editProps?.link || `./${record.id}/edit`}>
           <Button
             type="text"
             icon={
-              <EditOutlined
-                style={{
-                  color: ActionButtonColorEnum.EDIT,
-                }}
-              />
+              <EditOutlined style={{ color: ActionButtonColorEnum.EDIT }} />
             }
             {...editProps.buttonProps}
           />
@@ -66,11 +62,7 @@ function ActionButtonComponent<T extends BaseModel>(
           <Button
             type="text"
             icon={
-              <DeleteOutlined
-                style={{
-                  color: ActionButtonColorEnum.DELETE,
-                }}
-              />
+              <DeleteOutlined style={{ color: ActionButtonColorEnum.DELETE }} />
             }
             {...deleteProps?.buttonProps}
           />
@@ -80,5 +72,4 @@ function ActionButtonComponent<T extends BaseModel>(
     </>
   );
 }
-
 export default ActionButtonComponent;

@@ -96,47 +96,47 @@ function useUserIndexController() {
       key: "actions",
       align: "center",
       width: 100,
-      render: (_, record) =>
-        ActionButtonComponent<User>(
-          {
-            editProps: {},
-            deleteProps: {
-              buttonProps: {
-                disabled:
-                  currentUserData?.id === record.id ||
-                  !ability.can(
-                    PermissionCodeEnum.DELETE_USER,
-                    PermissionGroupEnum.AUTH,
-                  ),
-                icon: (
-                  <DeleteOutlined
-                    style={{
-                      color:
-                        currentUserData?.id === record.id ||
-                        !ability.can(
-                          PermissionCodeEnum.DELETE_USER,
-                          PermissionGroupEnum.AUTH,
-                        )
-                          ? ActionButtonColorEnum.DISABLED
-                          : ActionButtonColorEnum.DELETE,
-                    }}
-                  />
+      render: (_, record) => (
+        <ActionButtonComponent<User>
+          detailProps={{ link: `./${record.id}` }}
+          editProps={{ link: `./${record.id}/edit` }}
+          deleteProps={{
+            buttonProps: {
+              disabled:
+                currentUserData?.id === record.id ||
+                !ability.can(
+                  PermissionCodeEnum.DELETE_USER,
+                  PermissionGroupEnum.AUTH,
                 ),
-              },
-              popConfirmProps: {
-                title: "Apakah Anda yakin ingin menghapus pengguna ini?",
-                onConfirm: () => handleDeleteUser(record.id!),
-                disabled:
-                  currentUserData?.id === record.id ||
-                  !ability.can(
-                    PermissionCodeEnum.DELETE_USER,
-                    PermissionGroupEnum.AUTH,
-                  ),
-              },
+              icon: (
+                <DeleteOutlined
+                  style={{
+                    color:
+                      currentUserData?.id === record.id ||
+                      !ability.can(
+                        PermissionCodeEnum.DELETE_USER,
+                        PermissionGroupEnum.AUTH,
+                      )
+                        ? ActionButtonColorEnum.DISABLED
+                        : ActionButtonColorEnum.DELETE,
+                  }}
+                />
+              ),
             },
-          },
-          record,
-        ),
+            popConfirmProps: {
+              title: "Apakah Anda yakin ingin menghapus pengguna ini?",
+              onConfirm: () => handleDeleteUser(record.id!),
+              disabled:
+                currentUserData?.id === record.id ||
+                !ability.can(
+                  PermissionCodeEnum.DELETE_USER,
+                  PermissionGroupEnum.AUTH,
+                ),
+            },
+          }}
+          record={record}
+        />
+      ),
     },
   ];
 

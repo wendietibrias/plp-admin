@@ -1,7 +1,13 @@
 import ActionButtonComponent from "@/Components/IndexComponent/ActionButtonComponent";
 import { AbilityContext } from "@/lib/Contexts/AbilityContext";
+import { ActionButtonColorEnum } from "@/lib/Enums/ActionButtonColorEnum";
+import {
+  PermissionCodeEnum,
+  PermissionGroupEnum,
+} from "@/lib/Enums/PermissionEnum";
 import UseIndexPageHooks from "@/lib/Hooks/PageHooks/IndexPageHooks";
 import type { Role } from "@/lib/Interfaces/Auth/Role";
+import { DeleteOutlined } from "@ant-design/icons";
 import { useAbility } from "@casl/react";
 import type { ColumnsType } from "antd/es/table";
 import useRoleIndexModel from "./RoleIndexModel";
@@ -40,24 +46,59 @@ function useRoleIndexController() {
       key: "actions",
       align: "center",
       width: 100,
-      render: (_, record) =>
-        ActionButtonComponent<Role>(
-          {
-            detailProps: {
-              link: `./${record.id}`,
+      render: (_, record) => (
+        <ActionButtonComponent<Role>
+          detailProps={{ link: `./${record.id}` }}
+          editProps={{ link: `./${record.id}/edit` }}
+          deleteProps={{
+            popConfirmProps: {
+              title: "Apakah Anda yakin ingin menghapus peran ini?",
+              onConfirm: () => handleDeleteRole(record.id!),
+              disabled: !ability.can(
+                PermissionCodeEnum.DELETE_ROLE,
+                PermissionGroupEnum.AUTH,
+              ),
             },
-            editProps: {
-              link: `./${record.id}/edit`,
+            buttonProps: {
+              disabled: !ability.can(
+                PermissionCodeEnum.DELETE_ROLE,
+                PermissionGroupEnum.AUTH,
+              ),
+              icon: (
+                <DeleteOutlined
+                  style={{
+                    color: !ability.can(
+                      PermissionCodeEnum.DELETE_ROLE,
+                      PermissionGroupEnum.AUTH,
+                    )
+                      ? ActionButtonColorEnum.DISABLED
+                      : ActionButtonColorEnum.DELETE,
+                  }}
+                />
+              ),
             },
-            deleteProps: {
-              popConfirmProps: {
-                title: "Apakah Anda yakin ingin menghapus peran ini?",
-                onConfirm: () => handleDeleteRole(record.id!),
-              },
-            },
-          },
-          record,
-        ),
+          }}
+          record={record}
+        />
+      ),
+
+      // ActionButtonComponent<Role>(
+      //   {
+      //     detailProps: {
+      //       link: `./${record.id}`,
+      //     },
+      //     editProps: {
+      //       link: `./${record.id}/edit`,
+      //     },
+      //     deleteProps: {
+      //       popConfirmProps: {
+      //         title: "Apakah Anda yakin ingin menghapus peran ini?",
+      //         onConfirm: () => handleDeleteRole(record.id!),
+      //       },
+      //     },
+      //   },
+      //   record,
+      // ),
     },
   ];
 
