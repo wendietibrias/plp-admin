@@ -2,7 +2,11 @@ import {
   PermissionCodeEnum,
   PermissionGroupEnum,
 } from "@/lib/Enums/PermissionEnum";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  HomeOutlined,
+  CalendarOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import type { Ability } from "@casl/ability";
 import type { ItemType } from "antd/es/menu/interface";
 import { useMemo } from "react";
@@ -16,7 +20,21 @@ export const useMenuItems = (ability: Ability): ItemType[] => {
         icon: <HomeOutlined />,
         label: "Dashboard",
       },
-
+      {
+        key: "/school-years",
+        icon: <CalendarOutlined />,
+        label: "Tahun Ajaran",
+      },
+      {
+        key: "/study-classes",
+        icon: <CalendarOutlined />,
+        label: "Ruang Kelas",
+      },
+      {
+        key: "/study-programs",
+        icon: <CalendarOutlined />,
+        label: "Program Studi",
+      },
       {
         key: "AuthManagement",
         icon: <UserOutlined />,

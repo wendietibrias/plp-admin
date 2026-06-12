@@ -8,6 +8,15 @@ import { AdminRoutes } from "./AdminRoutes";
 import RoleRoutes from "./Auth/RoleRoutes";
 import UserRoutes from "./Auth/UserRoutes";
 import LoginRoutes from "./LoginRoutes";
+import SchoolYearRoutes from "./MasterData/SchoolYear/SchoolYearRoutes";
+import CreateSchoolYearRoutes from "./MasterData/SchoolYear/CreateSchoolYearRoutes";
+import EditSchoolYearRoutes from "./MasterData/SchoolYear/EditSchoolYearRoutes";
+import StudyClassRoutes from "./MasterData/StudyClass/StudyClassRoutes";
+import CreateStudyClassRoutes from "./MasterData/StudyClass/CreateStudyClassRoutes";
+import EditStudyClassRoutes from "./MasterData/StudyClass/EditStudyClassRoutes";
+import StudyProgramRoutes from "./MasterData/StudyProgram/StudyProgramRoutes";
+import CreateStudyProgramRoutes from "./MasterData/StudyProgram/CreateStudyProgramRoutes";
+import EditStudyProgramRoutes from "./MasterData/StudyProgram/EditStudyProgramRoutes";
 
 const AuthLayout = lazy(() => import("@/Layouts/AuthLayout"));
 
@@ -30,6 +39,15 @@ const RouteRender = () => {
               <>{AdminRoutes}</>
               <>{UserRoutes}</>
               <>{RoleRoutes}</>
+              <>{SchoolYearRoutes}</>
+              <>{CreateSchoolYearRoutes}</>
+              <>{EditSchoolYearRoutes}</>
+              <>{StudyClassRoutes}</>
+              <>{CreateStudyClassRoutes}</>
+              <>{EditStudyClassRoutes}</>
+              <>{StudyProgramRoutes}</>
+              <>{CreateStudyProgramRoutes}</>
+              <>{EditStudyProgramRoutes}</>
               <Route
                 path="*"
                 element={

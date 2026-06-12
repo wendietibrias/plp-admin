@@ -145,9 +145,9 @@ function AdminLayout() {
     });
   };
 
-  useEffect(() => {
-    if (!isAuthenticated && !userData) navigate("/auth/login");
-  }, [isAuthenticated, userData]);
+  // useEffect(() => {
+  //   if (isAuthenticated && !userData) navigate("/auth/login");
+  // }, [isAuthenticated, userData]);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
