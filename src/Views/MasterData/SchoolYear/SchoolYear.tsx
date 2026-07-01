@@ -178,14 +178,7 @@ const SchoolYear: React.FC = () => {
       {/* Content Wrapper */}
       <Content style={{ padding: "32px 32px 40px 32px" }}>
         {/* Title Row with Action Button */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            marginBottom: "24px",
-          }}
-        >
+        <div className="flex justify-between items-start mb-6">
           <div>
             <Title
               level={2}
@@ -211,12 +204,11 @@ const SchoolYear: React.FC = () => {
               type="primary"
               icon={<PlusOutlined />}
               style={{
-                backgroundColor: "#1677ff",
-                borderRadius: "8px",
                 height: "40px",
-                fontWeight: 600,
-                display: "flex",
-                alignItems: "center",
+                borderRadius: "8px",
+                fontWeight: 500,
+                backgroundColor: "#1677ff",
+                boxShadow: "0 2px 4px rgba(22, 119, 255, 0.2)",
               }}
             >
               Tambah Tahun Ajaran

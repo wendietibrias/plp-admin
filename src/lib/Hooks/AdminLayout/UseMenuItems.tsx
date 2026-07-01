@@ -36,6 +36,16 @@ export const useMenuItems = (ability: Ability): ItemType[] => {
         label: "Program Studi",
       },
       {
+        key: "/academic-advisors",
+        icon: <CalendarOutlined />,
+        label: "Pembimbing Akademik",
+      },
+      {
+        key: "/class-schedules",
+        icon: <CalendarOutlined />,
+        label: "Jadwal Kuliah",
+      },
+      {
         key: "AuthManagement",
         icon: <UserOutlined />,
         label: "Manajemen Pengguna",
