@@ -46,6 +46,36 @@ export const useMenuItems = (ability: Ability): ItemType[] => {
         label: "Jadwal Kuliah",
       },
       {
+        key: "/course-attendances",
+        icon: <CalendarOutlined />,
+        label: "Absensi Kuliah",
+      },
+      {
+        key: "/courses",
+        icon: <CalendarOutlined />,
+        label: "Matakuliah",
+      },
+      {
+        key: "/lecturers",
+        icon: <CalendarOutlined />,
+        label: "Dosen",
+      },
+      {
+        key: "/students",
+        icon: <CalendarOutlined />,
+        label: "Mahasiswa",
+      },
+      {
+        key: "/semesters",
+        icon: <CalendarOutlined />,
+        label: "Semester",
+      },
+      {
+        key: "/student-courses",
+        icon: <CalendarOutlined />,
+        label: "KRS",
+      },
+      {
         key: "AuthManagement",
         icon: <UserOutlined />,
         label: "Manajemen Pengguna",
